@@ -7,6 +7,7 @@ Parent repository for the Document RAG microservice platform. The service folder
 - `rag-upload-service` - file upload, metadata, and S3 integration entrypoint.
 - `rag-document-processing-service` - document ingestion, parsing, extraction, and chunk preparation.
 - `rag-embedding-service` - embedding generation, vector indexing, and semantic search.
+- `rag-query-service` - user question handling, retrieval orchestration, and streaming LLM answers.
 
 ## Clone
 
@@ -44,9 +45,17 @@ Default host ports:
 - Upload service: `http://localhost:8080`
 - Document processing service: `http://localhost:8081`
 - Embedding service: `http://localhost:8082`
+- Query service: `http://localhost:8083`
 - OpenSearch: `http://localhost:9200`
 - LocalStack: `http://localhost:4566`
 - Ollama: `http://localhost:11434`
+
+Query streaming endpoint:
+
+```text
+POST http://localhost:8083/api/v1/query/stream
+Accept: text/event-stream
+```
 
 ## Higher Environments
 
@@ -63,6 +72,7 @@ Provide infrastructure values through environment variables, secrets, or your de
 - Real SQS queues for `document-ready` and `embedding-created` events.
 - Real OpenSearch endpoint for metadata and vector indexes.
 - Real Ollama or embedding model endpoint reachable by `rag-embedding-service`.
+- Real LLM endpoint reachable by `rag-query-service`.
 - AWS credentials through IAM role, task role, instance profile, or the standard AWS SDK credential chain.
 
 LocalStack endpoints such as `AWS_S3_ENDPOINT=http://localstack:4566` and `AWS_SQS_ENDPOINT=http://localstack:4566` are local-only. In production, leave AWS endpoint override variables empty or unset so the AWS SDK uses real AWS service endpoints automatically.
@@ -98,5 +108,6 @@ Examples:
 
 - `rag-auth-service`
 - `rag-query-service`
+- `rag-chat-service`
 - `rag-api-gateway`
 - `rag-observability-service`

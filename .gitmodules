@@ -7,3 +7,6 @@
 [submodule "rag-embedding-service"]
 	path = rag-embedding-service
 	url = https://github.com/surajpawar-dev/embedding-service.git
+[submodule "rag-query-service"]
+	path = rag-query-service
+	url = https://github.com/surajpawar-dev/query-service.git

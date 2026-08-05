@@ -89,7 +89,7 @@ services:
       OLLAMA_HOST: http://ollama:11434
     entrypoint: ["/bin/sh", "-c"]
     command:
-      - "until ollama list >/dev/null 2>&1; do sleep 2; done; ollama pull nomic-embed-text"
+      - "until ollama list >/dev/null 2>&1; do sleep 2; done; ollama pull nomic-embed-text; ollama pull llama3.1"
 
   rag-document-processing-service:
     build:
@@ -194,6 +194,29 @@ services:
       DOCUMENT_PROCESSING_LANGUAGE: en
     ports:
       - "8080:8080"
+
+  rag-query-service:
+    build:
+      context: ./rag-query-service
+    depends_on:
+      rag-embedding-service:
+        condition: service_started
+      ollama:
+        condition: service_started
+      ollama-pull:
+        condition: service_completed_successfully
+    environment:
+      SPRING_PROFILES_ACTIVE: local
+      SERVER_PORT: 8080
+      EMBEDDING_SERVICE_BASE_URL: http://rag-embedding-service:8080
+      QUERY_DEFAULT_TOP_K: 5
+      QUERY_INCLUDE_SOURCES_BY_DEFAULT: "true"
+      LLM_PROVIDER: ollama
+      LLM_BASE_URL: http://ollama:11434
+      LLM_MODEL: llama3.1
+      SECURITY_JWT_ENABLED: "false"
+    ports:
+      - "8083:8080"
 
 volumes:
   localstack-data:
