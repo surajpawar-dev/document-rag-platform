@@ -1,0 +1,9 @@
+[submodule "rag-upload-service"]
+	path = rag-upload-service
+	url = https://github.com/surajpawar-dev/upload-service.git
+[submodule "rag-document-processing-service"]
+	path = rag-document-processing-service
+	url = https://github.com/surajpawar-dev/document-processing-service.git
+[submodule "rag-embedding-service"]
+	path = rag-embedding-service
+	url = https://github.com/surajpawar-dev/embedding-service.git
