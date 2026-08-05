@@ -1,4 +1,4 @@
-﻿# Document RAG Platform
+# Document RAG Platform
 
 Parent repository for the Document RAG microservice platform. The service folders are Git submodules, so each service keeps its own Git history and GitHub repository.
 

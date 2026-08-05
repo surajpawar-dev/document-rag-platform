@@ -1,4 +1,4 @@
-﻿name: document-rag-platform
+name: document-rag-platform
 
 services:
   localstack:
