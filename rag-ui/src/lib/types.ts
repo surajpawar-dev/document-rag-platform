@@ -14,6 +14,7 @@ export interface ChatRequestPayload extends SearchScope {
 
 export interface BackendQueryRequest {
   question: string;
+  mode?: SearchMode;
   topK?: number;
   documentIds?: string[];
   includeSources?: boolean;

@@ -35,8 +35,8 @@ export function SettingsPage() {
 
         <article className="settings-card glass-panel">
           <h2>Integration Notes</h2>
-          <p>The frontend supports the requested search modes. The current query backend accepts document filtering but does not yet expose `mode` or `collectionId`; those are mapped client-side.</p>
-          <p>Document list and collections are stored in the browser until backend list, delete, and collection endpoints are added.</p>
+          <p>General AI sends a direct LLM request through the query service without document retrieval. Document and collection modes use embedding search before calling the LLM.</p>
+          <p>Collections are mapped client-side to document IDs until backend collection endpoints are added.</p>
         </article>
       </section>
     </div>

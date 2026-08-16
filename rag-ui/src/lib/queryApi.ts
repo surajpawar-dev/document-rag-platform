@@ -4,9 +4,10 @@ import type { BackendQueryRequest, ChatRequestPayload, QueryStreamEvent } from "
 function toBackendQueryRequest(payload: ChatRequestPayload): BackendQueryRequest {
   return {
     question: payload.question,
+    mode: payload.mode,
     includeSources: payload.mode !== "GENERAL",
-    topK: payload.mode === "GENERAL" ? 1 : 8,
-    documentIds: payload.mode === "SPECIFIC" ? payload.documentIds : []
+    topK: payload.mode === "GENERAL" ? undefined : 8,
+    documentIds: payload.mode === "SPECIFIC" || payload.mode === "COLLECTION" ? payload.documentIds : []
   };
 }
 
