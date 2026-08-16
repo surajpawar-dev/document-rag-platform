@@ -23,7 +23,7 @@ services:
     environment:
       discovery.type: single-node
       plugins.security.disabled: "true"
-      OPENSEARCH_INITIAL_ADMIN_PASSWORD: Admin123!
+      OPENSEARCH_INITIAL_ADMIN_PASSWORD: StrongP@ssw0rd2026!
       OPENSEARCH_JAVA_OPTS: "-Xms1g -Xmx1g"
     ports:
       - "9200:9200"
@@ -150,7 +150,7 @@ services:
       VECTOR_STORE_MODE: opensearch
       OPENSEARCH_ENDPOINT: http://opensearch:9200
       OPENSEARCH_USERNAME: admin
-      OPENSEARCH_PASSWORD: admin
+      OPENSEARCH_PASSWORD: StrongP@ssw0rd2026!
       JOB_STORE_MODE: jpa
       CHUNK_CLIENT_MODE: document-service
       EVENT_PUBLISHER_MODE: sqs
